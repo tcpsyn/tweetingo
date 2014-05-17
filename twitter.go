@@ -4,12 +4,11 @@ import (
 	"bufio"
 	"flag"
 	"fmt"
+	"github.com/ChimeraCoder/anaconda"
+	"github.com/mrjones/oauth"
 	"os"
 	"os/exec"
 	"regexp"
-
-	"github.com/ChimeraCoder/anaconda"
-	"github.com/mrjones/oauth"
 )
 
 const delim = '\n'
@@ -20,13 +19,13 @@ export your own consumer key and secret to the environment variables
 TWITTER_CONSUMER_KEY and TWITTER_CONSUMER_SECRET respectively.
 */
 
-var consumerkey string = os.Getenv("TWITTER_CONSUMER_KEY")
-var consumersecret string = os.Getenv("TWITTER_CONSUMER_SECRET")
-var usertoken string = ""
-var usersecret string = ""
-var userid string = ""
-var screenname string = ""
-var loggedin bool = false
+var consumerkey = os.Getenv("TWITTER_CONSUMER_KEY")
+var consumersecret = os.Getenv("TWITTER_CONSUMER_SECRET")
+var usertoken = ""
+var usersecret = ""
+var userid = ""
+var screenname = ""
+var loggedin = false
 
 func main() {
 	clear()
@@ -40,7 +39,7 @@ func main() {
 	api := anaconda.NewTwitterApi(usertoken, usersecret)
 
 	// Loop until runnning == false.
-	var running bool = true
+	var running = true
 
 	for running {
 
@@ -93,7 +92,7 @@ func main() {
 
 // Just generating the menu string so it's all on one line.
 func showMenu(menu map[string]string) {
-	var menuString string = ""
+	var menuString string
 	for key, value := range menu {
 		menuString = menuString + "[" + key + "]" + value + " "
 	}
